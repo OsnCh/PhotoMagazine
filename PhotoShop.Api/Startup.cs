@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PhotoMagazine.Api.Configuration;
+using PhotoMagazine.Api.Filters;
 
 namespace PhotoMagazine.Api
 {
@@ -26,13 +29,24 @@ namespace PhotoMagazine.Api
             _serviceScopeFactory = serivceScopeFactory;
             var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            Business.DependecyManager.Configure(services, Configuration.GetConnectionString("DefaultConnection"));
+            services.ConfigureDbContext(Configuration);
+            services.ConfigureDependency(Configuration);
+            services.ConfigureAuthentication(Configuration);
+            services.ConfigureHttpContextAccessor();
+            services.AddMvc(options => {
+                options.Filters.Add<ModelStateValidatorFilter>();
+                options.Filters.Add<ResponseDataFilter>();
+                options.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));
+            });
+
+            services.BuildServiceProvider();
         }
 
         public IConfiguration Configuration { get; private set; }
@@ -44,10 +58,21 @@ namespace PhotoMagazine.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
+            app.UseAuthentication();
+
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.Run(async (context) =>
+            //{
+            //    var description = string.Join("\n", Configuration.GetSection("ApiInformation").
+            //        AsEnumerable().Select(v => v.Value).Where(v => !string.IsNullOrWhiteSpace(v)));
+            //    await context.Response.WriteAsync(description);
+            //});
         }
     }
 }

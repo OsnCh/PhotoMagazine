@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PhotoMagazine.Entitys.Entitys
 {
-    public class ApplicationUser : IdentityUser<string>
+    [Table("aspnetusers")]
+    public class ApplicationUser : IdentityUser
     {
         [Required]
         [MaxLength(100)]
@@ -18,5 +20,7 @@ namespace PhotoMagazine.Entitys.Entitys
 
         [Required]
         public DateTime JoinDate { get; set; }
+
+        
     }
 }

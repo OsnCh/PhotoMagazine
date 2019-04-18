@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using PhotoMagazine.DataAccess.Repositories;
+using PhotoMagazine.DataAccess.Repositories.Interfaces;
+
 
 namespace PhotoMagazine.DataAccess
 {
@@ -10,6 +11,8 @@ namespace PhotoMagazine.DataAccess
         public static void Configure(IServiceCollection services, string connectionString)
         {
             services.AddSingleton(new DataConfiguration(connectionString));
+
+            services.AddSingleton<IUserConfirmationCodeRepository, UserConfirmationCodeRepository>();
         }
     }
 }
