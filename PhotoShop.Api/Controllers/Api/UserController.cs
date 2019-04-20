@@ -23,6 +23,7 @@ namespace PhotoMagazine.Api.Controllers.Api
         }
 
         [HttpGet("home")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserHome()
         {
             var userId = User.Identity.GetUserId();
