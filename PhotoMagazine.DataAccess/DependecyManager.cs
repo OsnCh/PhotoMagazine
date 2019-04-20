@@ -13,6 +13,7 @@ namespace PhotoMagazine.DataAccess
             services.AddSingleton(new DataConfiguration(connectionString));
 
             services.AddSingleton<IUserConfirmationCodeRepository, UserConfirmationCodeRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
         }
     }
 }

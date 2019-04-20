@@ -18,6 +18,15 @@ namespace PhotoMagazine.Api.Filters
 
         public void OnResultExecuting(ResultExecutingContext context)
         {
+            var isApiQuery = 
+                context.HttpContext.Request.Path.
+                Value.ToLower().Contains("/api/");
+
+            if (!isApiQuery)
+            {
+                return;
+            }
+
             if (context.Result is ObjectResult)
             {
                 var valueResult = (context.Result as ObjectResult).Value;
@@ -46,7 +55,6 @@ namespace PhotoMagazine.Api.Filters
                     });
                 }
 
-                return;
             }
 
         }

@@ -39,6 +39,7 @@ namespace PhotoMagazine.Api
             services.ConfigureDbContext(Configuration);
             services.ConfigureDependency(Configuration);
             services.ConfigureAuthentication(Configuration);
+            services.ApiInformationConfigure(Configuration);
             services.ConfigureHttpContextAccessor();
             services.AddMvc(options => {
                 options.Filters.Add<ModelStateValidatorFilter>();
@@ -66,13 +67,6 @@ namespace PhotoMagazine.Api
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //app.Run(async (context) =>
-            //{
-            //    var description = string.Join("\n", Configuration.GetSection("ApiInformation").
-            //        AsEnumerable().Select(v => v.Value).Where(v => !string.IsNullOrWhiteSpace(v)));
-            //    await context.Response.WriteAsync(description);
-            //});
         }
     }
 }

@@ -44,8 +44,9 @@ namespace PhotoMagazine.DataAccess.Repositories
         public async Task<bool> ConfirmCode(string userId, string confirmationCode)
         {
             var sql = @"DECLARE @codeExist bit;
-                        Set @codeExist = EXISTS(SELECT * FROM UserConfirmationCode 
-                        WHERE UserID = @userId AND ConfirmationCode = @code);                       
+                        Set @codeExist = CASE WHEN EXISTS(SELECT * FROM UserConfirmationCodes 
+                        WHERE UserID = @userId AND ConfirmationCode = @code) THEN 1 ELSE 0  
+                        END
                         UPDATE AspNetUsers SET EmailConfirmed = @codeExist;
                         SELECT @codeExist;";
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PhotoMagazine.DataAccess.Repositories
 {
-    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
+    public class BaseRepository
     {
         public string ConnectionString { get; private set; }
         public SqlConnection Connection { get; private set; }
@@ -20,6 +20,19 @@ namespace PhotoMagazine.DataAccess.Repositories
             ConnectionString = dataConfiguration.ConnectionString;
             Connection = new SqlConnection(ConnectionString);
             Connection.Open();
+        }
+
+        public void Dispose()
+        {
+            Connection.Close();
+            Connection.Dispose();
+        }
+    }
+
+    public class BaseRepository<TEntity> : BaseRepository, IBaseRepository<TEntity> where TEntity : BaseEntity
+    {
+        public BaseRepository(DataConfiguration dataConfiguration) : base(dataConfiguration)
+        {
         }
 
         public Task<TEntity> Get(int id)
@@ -42,10 +55,5 @@ namespace PhotoMagazine.DataAccess.Repositories
             return Connection.UpdateAsync(entity);
         }
 
-        public void Dispose()
-        {
-            Connection.Close();
-            Connection.Dispose();
-        }
     }
 }

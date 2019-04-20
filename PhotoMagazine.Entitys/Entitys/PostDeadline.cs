@@ -5,10 +5,11 @@ using System.Text;
 
 namespace PhotoMagazine.Entitys.Entitys
 {
-    [Table("UserInvoces")]
-    public class Invoice: BaseEntity
+    [Table("PostDeadlines")]
+    class PostDeadline: BaseEntity
     {
-        public string UserId { get; set; }
-        public uint Count { get; set; }
+        public long PostId { get; set; }
+
+        public DateTime Deadline { get; set; }
     }
 }

@@ -5,10 +5,9 @@ using System.Text;
 
 namespace PhotoMagazine.Entitys.Entitys
 {
-    [Table("UserInvoces")]
-    public class Invoice: BaseEntity
+    [Table("Photos")]
+    public class Photo: BaseEntity
     {
-        public string UserId { get; set; }
-        public uint Count { get; set; }
+        public byte[] Data { get; set; }
     }
 }
