@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28822.285
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMagazine.Api", "PhotoShop.Api\PhotoMagazine.Api.csproj", "{AB7AEEFD-FE9C-4FC7-9588-9D0FD675D52E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMagazine.Api", "PhotoShop.Api\PhotoMagazine.Api.csproj", "{AB7AEEFD-FE9C-4FC7-9588-9D0FD675D52E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMagazine.Entitys", "PhotoMagazine.Entitys\PhotoMagazine.Entitys.csproj", "{711C33C8-2466-4214-87DB-A0552FFA540D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMagazine.Entitys", "PhotoMagazine.Entitys\PhotoMagazine.Entitys.csproj", "{711C33C8-2466-4214-87DB-A0552FFA540D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMagazine.Business", "PhotoMagazine.Buisness\PhotoMagazine.Business.csproj", "{A56C73DE-7A59-46E2-93D9-3EE13DDE736F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMagazine.Business", "PhotoMagazine.Buisness\PhotoMagazine.Business.csproj", "{A56C73DE-7A59-46E2-93D9-3EE13DDE736F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMagazine.DataAccess", "PhotoMagazine.DataAccess\PhotoMagazine.DataAccess.csproj", "{31F7441D-791A-4EE1-A679-C5A34DA578DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMagazine.DataAccess", "PhotoMagazine.DataAccess\PhotoMagazine.DataAccess.csproj", "{31F7441D-791A-4EE1-A679-C5A34DA578DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoMagazine.ViewModels", "PhotoMagazine.ViewModels\PhotoMagazine.ViewModels.csproj", "{2A3380BD-C3F7-477A-B18D-B7A46E153D94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoMagazine.ViewModels", "PhotoMagazine.ViewModels\PhotoMagazine.ViewModels.csproj", "{2A3380BD-C3F7-477A-B18D-B7A46E153D94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

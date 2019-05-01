@@ -14,8 +14,9 @@ namespace PhotoMagazine.Business
         {
             DataAccess.DependecyManager.Configure(services, connectionString);
 
-            services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<JwtFactory, JwtFactory>();
+            services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IPostService, PostService>();
         }
     }
 }

@@ -1,0 +1,3 @@
+﻿# PhotoMagazine.Client
+
+

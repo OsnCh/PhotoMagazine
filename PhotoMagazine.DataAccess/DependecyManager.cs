@@ -14,6 +14,7 @@ namespace PhotoMagazine.DataAccess
 
             services.AddSingleton<IUserConfirmationCodeRepository, UserConfirmationCodeRepository>();
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IPostRepository, PostRepository>();
         }
     }
 }
