@@ -1,0 +1,41 @@
+﻿<views:MvxWpfView
+    x:Class="PhotoMagazine.Client.WPF.Views.LoginView"
+    xmlns:views="clr-namespace:MvvmCross.Platforms.Wpf.Views;assembly=MvvmCross.Platforms.Wpf"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:PhotoMagazine.Client"
+    mc:Ignorable="d"   
+    d:DesignHeight="450" d:DesignWidth="800">
+    <views:MvxWpfView.Background>
+        <ImageBrush ImageSource="/Resources/IMG_2605.jpg" Stretch="UniformToFill"/>
+    </views:MvxWpfView.Background>
+
+    <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20 50">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="20" BorderThickness="2,2,2,2">
+            <Border.Background>
+                <SolidColorBrush Color="White" Opacity="0.8"></SolidColorBrush>
+            </Border.Background>
+            <StackPanel Width="300">
+                <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" FontSize="20" VerticalContentAlignment="Center" Grid.Row="0" Height="30"/>
+                <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" FontSize="20" VerticalContentAlignment="Center" Grid.Row="0" Height="30"/>
+                <StackPanel Height="50" Orientation="Horizontal">
+                    <Button Click="{Binding LoginAsyncCommand}" Width="130" Margin="10">
+                        Login
+                    </Button>
+                    <Button Width="130" Margin="10">Registration</Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</views:MvxWpfView>
